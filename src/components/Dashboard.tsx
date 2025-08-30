@@ -33,10 +33,6 @@ export const Dashboard = ({ roomId }: DashboardProps) => {
 
 return (
   <div className="flex flex-col w-full h-screen text-white bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] backdrop-blur-lg">
-    {/* Visualizer Canvas Background */}
-      <div className="absolute inset-0 z-5 pointer-events-none w-full h-full">
-        <AudioVisualizer />
-      </div>
     {/* Top bar (fixed height) */}
     <TopBar roomId={roomId} />
 
