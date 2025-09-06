@@ -276,9 +276,7 @@ export const useGlobalStore = create<GlobalState>((set, get) => {
     // Decode initial first audio source
     sourceNode.buffer = firstSource.audioBuffer;
     sourceNode.connect(gainNode);
-    gainNode.connect(audioContext.destination);
-    
-    sourceNode.connect(analyser);
+    gainNode.connect(analyser);
     analyser.connect(audioContext.destination);
     
     set({
@@ -714,7 +712,8 @@ export const useGlobalStore = create<GlobalState>((set, get) => {
       const newSourceNode = audioContext.createBufferSource();
       newSourceNode.buffer = audioBuffer;
       newSourceNode.connect(gainNode);
-      newSourceNode.connect(analyser);
+      gainNode.connect(analyser);
+      analyser.connect(audioContext.destination);
 
       // Autoplay: Handle track ending naturally
       newSourceNode.onended = () => {
